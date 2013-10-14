@@ -23,89 +23,98 @@ def gridcolumnmid():
 def gridcolumnright():
     print "|"
     	
-def gridrow(s):
+def gridrow(r):
     gridmidcountleft = 0
     gridmidcountright = 0
-    if s <= 0:
+    if r <= 0:
         print "Nice Try.  You can't have a grid less than or equal to 0"
-    elif s == 1:
+    elif r == 1:
         gridrowleft()
-    elif s == 2:
+    elif r == 2:
         gridrowleft()
         gridrowright()
-    elif s > 2 and s % 2 == 0:
+    elif r > 2 and r % 2 == 0:
         gridrowleft()
-        while gridmidcountleft < s-2:
+        while gridmidcountleft < r-2:
             gridrowmid()
             gridmidcountleft += 1
         gridrowright()
     else:
         gridrowleft()
-        while gridmidcountleft < s/2-1:
+        while gridmidcountleft < r/2-1:
             gridrowmid()
             gridmidcountleft += 1
         gridrowleft()
-        while gridmidcountright < s/2-1:
+        while gridmidcountright < r/2-1:
             gridrowmid()
             gridmidcountright += 1
         gridrowright()	
 
-def gridcolumn(s):
+def gridcolumn(c):
     gridcolumnmidcountleft = 0
     gridcolumnmidcountright = 0
-    if s <= 0:
+    if c <= 0:
         print "Nice Try.  You can't have a grid less than or equal to 0"
-    elif s == 1:
+    elif c == 1:
         gridcolumnleft()
-    elif s == 2:
+    elif c == 2:
         gridcolumnleft()
         gridcolumnright()
-    elif s > 2 and s % 2 == 0:
-        gridcolumnleft()
-        while gridcolumnmidcountleft < s-2:
-            gridcolumnmid()
-            gridcolumnmidcountleft += 1
-        gridcolumnright()
+
     else:
         gridcolumnleft()
-        while gridcolumnmidcountleft < s/2-1:
+        while gridcolumnmidcountleft < c/2-1:
             gridcolumnmid()
             gridcolumnmidcountleft += 1
         gridcolumnleft()
-        while gridcolumnmidcountright < s/2-1:
+        while gridcolumnmidcountright < c/2-1:
             gridcolumnmid()
             gridcolumnmidcountright += 1
         gridcolumnright()
    
-def print_grid(s):
+def print_grid(r,c):
     gridtoplength = 0
     gridbotlength = 0
-    if s <= 0:
+    if r <= 0 or c <=0 :
         print "Nice Try.  You can't have a grid less than or equal to 0"
-    elif s == 1:
-        gridrow(s)
-    elif s == 2:
-        gridrow(s)
-        gridrow(s)
-    elif s > 2 and s % 2 == 0:
-        gridrow(s)
-        while gridtoplength < s/2-1:
-            gridcolumn(s)
+    elif r == 1 and c == 1:
+        gridrow(r)
+    elif(r > 1 and c == 1):
+        gridrow(r)
+        gridcolumn(c)
+    elif(r == 1 and c > 1):
+        gridrow(r)
+        gridcolumn(c)
+    elif r == 2 or c == 2:
+        gridrow(r)
+        gridrow(r)
+    elif (r == 2 and c > 2) or (r > 2 and c == 2):
+        gridrow(r)
+        gridcolumn(c)
+    else: 
+        gridrow(r)
+        while gridtoplength < r/2-1:
+            gridcolumn(c)
             gridtoplength += 1
-        while gridbotlength < s/2-2:
-            gridcolumn(s)
+        gridrow(r)
+        while gridbotlength < r/2-1:
+            gridcolumn(c)
             gridbotlength += 1
-        gridrow(s)
+        gridrow(r)
+    """
     else:
-        gridrow(s)
-        while gridtoplength < s/2-1:
-            gridcolumn(s)
+        gridrow(r)
+        while gridtoplength < c/2-1:
+            gridcolumn(c)
             gridtoplength += 1
-        gridrow(s)
-        while gridbotlength < s/2-1:
-            gridcolumn(s)
+        gridrow(r)
+        while gridbotlength < c/2-1:
+            gridcolumn(c)
             gridbotlength += 1
-        gridrow(s)
+        gridrow(r)
+    """
 
-print_grid(21)    
+
+print_grid(9,7)
+
 
